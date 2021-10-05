@@ -18,8 +18,22 @@ namespace cis237_assignment_2
         public void SolveMaze(char[,] maze, int xStart, int yStart)
         {
             // Do work needed to use mazeTraversal recursive call and solve the maze.
+            mazeTraversal(maze, xStart, yStart);
+            PrintMaze(maze);
         }
 
+        private void PrintMaze(char [,] maze)
+        {
+            for (int x = 0; x < maze.GetLength(0); x++)
+            {
+                for (int y = 0; y < maze.GetLength(1); y++)
+                {
+                    Console.Write(maze[x, y]);
+                }
+                Console.WriteLine("\t");
+            }
+            Console.WriteLine();
+        }
 
         /// <summary>
         /// This should be the recursive method that gets called to solve the maze.
@@ -28,9 +42,45 @@ namespace cis237_assignment_2
         /// More than likely you will need to pass in at a minimum the current position
         /// in X and Y maze coordinates. EX: mazeTraversal(int currentX, int currentY)
         /// </summary>
-        private void mazeTraversal()
+        private bool mazeTraversal(char [,] maze, int x, int y)
         {
             // Implement maze traversal recursive call
+            //base case
+            if ( x >= maze.GetLength(0) || x < 0 || y >= maze.GetLength(1) || y < 0)
+            {
+                return true;
+            }
+            if (maze[x,y] == '#' || maze[x,y] == '0' || maze[x,y] == 'X')
+            {
+                return false;
+            }
+            maze[x, y] = 'X';
+
+            if (mazeTraversal(maze, x, y + 1))
+            {
+                maze[x, y] = 'X';
+                return true;
+            }
+            if (mazeTraversal(maze, x + 1, y))
+            {
+                maze[x, y] = 'X';
+                return true;
+            }
+            if (mazeTraversal(maze, x, y - 1))
+            {
+                maze[x, y] = 'X';
+                return true;
+            }
+            if (mazeTraversal(maze, x - 1, y))
+            {
+                maze[x, y] = 'X';
+                return true;
+            }
+            else
+            {
+                maze[x, y] = '0';
+                return false;
+            }
         }
     }
 }

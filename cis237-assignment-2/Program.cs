@@ -36,11 +36,11 @@ namespace cis237_assignment_2
             // Create a new instance of a mazeSolver.
             MazeSolver mazeSolver = new MazeSolver();
 
-            // Create the second maze by transposing the first maze
-            char[,] maze2 = transposeMaze(maze1);
-
             // Solve the original maze.
             mazeSolver.SolveMaze(maze1, X_START, Y_START);
+
+            // Create the second maze by transposing the first maze
+            char[,] maze2 = transposeMaze(maze1);
 
             // Solve the transposed maze.
             mazeSolver.SolveMaze(maze2, X_START, Y_START);
@@ -68,8 +68,32 @@ namespace cis237_assignment_2
         /// <returns>transposedMaze</returns>
         static char[,] transposeMaze(char[,] mazeToTranspose)
         {
-            //Write code her to create a transposed maze.
-            return new char[1, 1];
+            //Write code here to create a transposed maze.
+            char[,] tempMaze =
+            { { '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' },
+            { '#', '.', '.', '.', '#', '.', '.', '.', '.', '.', '.', '#' },
+            { '#', '.', '#', '.', '#', '.', '#', '#', '#', '#', '.', '#' },
+            { '#', '#', '#', '.', '#', '.', '.', '.', '.', '#', '.', '#' },
+            { '#', '.', '.', '.', '.', '#', '#', '#', '.', '#', '.', '.' },
+            { '#', '#', '#', '#', '.', '#', '.', '#', '.', '#', '.', '#' },
+            { '#', '.', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#' },
+            { '#', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#' },
+            { '#', '.', '.', '.', '.', '.', '.', '.', '.', '#', '.', '#' },
+            { '#', '#', '#', '#', '#', '#', '.', '#', '#', '#', '.', '#' },
+            { '#', '.', '.', '.', '.', '.', '.', '#', '.', '.', '.', '#' },
+            { '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' } };
+
+
+            for (int x = 0; x < mazeToTranspose.GetLength(0); x++)
+            {
+                for (int y = 0; y < mazeToTranspose.GetLength(1); y++)
+                {
+                    
+                    mazeToTranspose[y, x] = tempMaze[x, y];
+                    mazeToTranspose[x, y] = tempMaze[y, x];
+                }
+            }
+            return mazeToTranspose;
         }
     }
 }
