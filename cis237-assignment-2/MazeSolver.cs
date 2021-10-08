@@ -96,35 +96,30 @@ namespace cis237_assignment_2
             if (mazeTraversal(maze, x, y + 1))
             {
                 maze[x, y] = 'X';
-                PrintMaze(maze);
                 return true;
             }
             //check right
             if (mazeTraversal(maze, x + 1, y))
             {
                 maze[x, y] = 'X';
-                PrintMaze(maze);
                 return true;
             }
             //check above
             if (mazeTraversal(maze, x, y - 1))
             {
                 maze[x, y] = 'X';
-                PrintMaze(maze);
                 return true;
             }
             //check left
             if (mazeTraversal(maze, x - 1, y))
             {
                 maze[x, y] = 'X';
-                PrintMaze(maze);
                 return true;
             }
             //if the space has been visited, replace with 0 because the path leads to a dead end
             if(maze[x,y] == 'X')
             {
                 maze[x, y] = '0';
-                PrintMaze(maze);
                 return false;
             }
             return false;
