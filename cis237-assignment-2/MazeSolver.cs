@@ -44,7 +44,7 @@ namespace cis237_assignment_2
         /// Method to print out the char array maze, loops through each element in the array and prints to the console
         /// </summary>
         /// <param name="maze">char array maze to be printed</param>
-        private void PrintMaze(char [,] maze)
+        public void PrintMaze(char [,] maze)
         {
             for (int x = 0; x < maze.GetLength(0); x++)
             {

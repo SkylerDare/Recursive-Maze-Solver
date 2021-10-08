@@ -61,6 +61,13 @@ namespace cis237_assignment_2
 
             // Solve the transposed maze.
             mazeSolver.SolveMaze(maze2, X_START, Y_START);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Solved Maze 1");
+            mazeSolver.PrintMaze(maze1);
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Solved Maze 2");
+            mazeSolver.PrintMaze(maze2);
+            Console.ForegroundColor = ConsoleColor.DarkGray;
 
         }
 
