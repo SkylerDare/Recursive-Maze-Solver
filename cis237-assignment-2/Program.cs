@@ -1,4 +1,7 @@
-﻿using System;
+﻿//Skyler Dare
+//CIS 237
+//10/8/21
+using System;
 
 namespace cis237_assignment_2
 {
@@ -33,14 +36,28 @@ namespace cis237_assignment_2
             { '#', '.', '.', '.', '.', '.', '.', '#', '.', '.', '.', '#' },
             { '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' } };
 
+            char[,] maze2 =
+            { { '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' },
+            { '#', '.', '.', '.', '#', '.', '.', '.', '.', '.', '.', '#' },
+            { '#', '.', '#', '.', '#', '.', '#', '#', '#', '#', '.', '#' },
+            { '#', '#', '#', '.', '#', '.', '.', '.', '.', '#', '.', '#' },
+            { '#', '.', '.', '.', '.', '#', '#', '#', '.', '#', '.', '.' },
+            { '#', '#', '#', '#', '.', '#', '.', '#', '.', '#', '.', '#' },
+            { '#', '.', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#' },
+            { '#', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#' },
+            { '#', '.', '.', '.', '.', '.', '.', '.', '.', '#', '.', '#' },
+            { '#', '#', '#', '#', '#', '#', '.', '#', '#', '#', '.', '#' },
+            { '#', '.', '.', '.', '.', '.', '.', '#', '.', '.', '.', '#' },
+            { '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' } };
+
             // Create a new instance of a mazeSolver.
             MazeSolver mazeSolver = new MazeSolver();
 
+            // Create the second maze by transposing the first maze
+            transposeMaze(maze2);
+
             // Solve the original maze.
             mazeSolver.SolveMaze(maze1, X_START, Y_START);
-
-            // Create the second maze by transposing the first maze
-            char[,] maze2 = transposeMaze(maze1);
 
             // Solve the transposed maze.
             mazeSolver.SolveMaze(maze2, X_START, Y_START);
@@ -64,11 +81,13 @@ namespace cis237_assignment_2
         /// It is important that you return a "new" char array as the transposed maze.
         /// If you do not, you could end up only solving the transposed maze.
         /// </summary>
-        /// <param name="mazeToTranspose"></param>
+        /// <param name="mazeToTranspose">passes in the maze to be transposed</param>
         /// <returns>transposedMaze</returns>
         static char[,] transposeMaze(char[,] mazeToTranspose)
         {
             //Write code here to create a transposed maze.
+            //create a new char array to hold the old maze, was having issues with passing by reference
+            //so I just made a whole new one to store the values
             char[,] tempMaze =
             { { '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' },
             { '#', '.', '.', '.', '#', '.', '.', '.', '.', '.', '.', '#' },
@@ -82,12 +101,11 @@ namespace cis237_assignment_2
             { '#', '#', '#', '#', '#', '#', '.', '#', '#', '#', '.', '#' },
             { '#', '.', '.', '.', '.', '.', '.', '#', '.', '.', '.', '#' },
             { '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' } };
-
+            //loops through the array and swaps the collumn and row values to eachother
             for (int x = 0; x < mazeToTranspose.GetLength(0); x++)
             {
                 for (int y = 0; y < mazeToTranspose.GetLength(1); y++)
                 {
-                    
                     mazeToTranspose[y, x] = tempMaze[x, y];
                     mazeToTranspose[x, y] = tempMaze[y, x];
                 }
