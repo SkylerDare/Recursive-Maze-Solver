@@ -2,7 +2,7 @@
 
 ## Author
 
-
+Skyler Dare
 
 ## Description
 
@@ -49,8 +49,8 @@ Don't forget that you must have a base case for your recursive method or you wil
 
 ## Outside Resources Used
 
-
+none
 
 ## Known Problems, Issues, And/Or Errors in the Program
 
-
+Replaced my else statment, I'm pretty sure it still works fine, but it was reccommended that I should change it.

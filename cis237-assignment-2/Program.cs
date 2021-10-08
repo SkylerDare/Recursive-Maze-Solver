@@ -83,7 +83,6 @@ namespace cis237_assignment_2
             { '#', '.', '.', '.', '.', '.', '.', '#', '.', '.', '.', '#' },
             { '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' } };
 
-
             for (int x = 0; x < mazeToTranspose.GetLength(0); x++)
             {
                 for (int y = 0; y < mazeToTranspose.GetLength(1); y++)

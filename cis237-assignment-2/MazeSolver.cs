@@ -76,11 +76,12 @@ namespace cis237_assignment_2
                 maze[x, y] = 'X';
                 return true;
             }
-            else
+            if(maze[x,y] == 'X')
             {
                 maze[x, y] = '0';
                 return false;
             }
+            return false;
         }
     }
 }
